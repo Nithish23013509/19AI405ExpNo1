@@ -45,7 +45,7 @@ import random
 import time
 
 
-class Thing: 
+      class Thing: 
     """
     This represents any physical object that can appear in an Environment. """
 
@@ -56,7 +56,7 @@ class Thing:
     def show_state(self):
         """Display the agent's internal state. Subclasses should override."""
         print("I don't know how to show_state.")
-class Agent(Thing):
+    class Agent(Thing):
     
     """
         An Agent is a subclass of Thing """
@@ -69,7 +69,7 @@ class Agent(Thing):
     def can_grab(self, thing):
         """Return True if this agent can grab this thing. Override for appropriate subclasses of Agent and Thing.""" 
         return False   
-def TableDrivenAgentProgram(table): 
+    def TableDrivenAgentProgram(table): 
     """
     [Figure 2.7]
     This agent selects an action based on the percept sequence. It is practical only for tiny domains.
@@ -84,8 +84,8 @@ def TableDrivenAgentProgram(table):
         action = table.get(tuple(percepts))
         return action 
     return program
-room_A, room_B = (0,0), (1,0) # The two locations for the Doctor to treat
-def TableDrivenDoctorAgent():
+    room_A, room_B = (0,0), (1,0) # The two locations for the Doctor to treat
+    def TableDrivenDoctorAgent():
     """
     Tabular approach towards hospital function. 
     """
@@ -103,8 +103,8 @@ def TableDrivenDoctorAgent():
     ((room_B, "unhealthy"), (room_B, "healthy"), (room_A, "unhealthy")): "treat",
     }
     return Agent(TableDrivenAgentProgram(table))
-TableDrivenDoctorAgent()
-class Environment:
+    TableDrivenDoctorAgent()
+    class Environment:
     """Abstract class representing an Environment. 'Real' Environment classes inherit from this. Your Environment will typically need to implement:
     percept:	Define the percept that an agent sees. execute_action:	Define the effects of executing an action.
     Also update the agent.performance slot.
