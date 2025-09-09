@@ -145,14 +145,14 @@ class Environment:
             for (agent, action) in zip(self.agents, actions): 
                 self.execute_action(agent, action)
 
-    def run(self, steps=1000):
+      def run(self, steps=1000):
         """Run the Environment for given number of time steps."""
         for step in range(steps):
             if self.is_done():
                 return 
             self.step()
 
-    def add_thing(self, thing, location=None):
+      def add_thing(self, thing, location=None):
         """Add a thing to the environment, setting its location. For convenience, if thing is an agent program we make a new agent for it. (Shouldn't need to override this.)"""
         if not isinstance(thing, Thing):
             thing = Agent(thing)
@@ -165,7 +165,7 @@ class Environment:
                 thing.performance = 0 
                 self.agents.append(thing)
 
-    def delete_thing(self, thing):
+      def delete_thing(self, thing):
         """Remove a thing from the environment."""
         try:
             
@@ -178,7 +178,7 @@ class Environment:
         if thing in self.agents: 
             self.agents.remove(thing)
 
-class TrivialDoctorEnvironment(Environment):
+    class TrivialDoctorEnvironment(Environment):
     """This environment has two locations, A and B. Each can be unhealthy or healthy. The agent perceives its location and the location's status. This serves as an example of how to implement a simple Environment."""
 
     def __init__(self):
@@ -215,7 +215,7 @@ class TrivialDoctorEnvironment(Environment):
     def default_location(self, thing):
            
         return random.choice([room_A, room_B])
-if   __name__ == "__main__":
+    if   __name__ == "__main__":
     
     agent = TableDrivenDoctorAgent() 
     environment = TrivialDoctorEnvironment() 
